@@ -1,0 +1,12 @@
+[Unit]
+Description=Startup script for the tgcd server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/tgcd.conf
+PIDFile=/var/run/tgcd/tgcd.pid
+ExecStart=/usr/bin/tgcd --nodaemon --level ${TGCD_VERBOSE} ${TGCD_MODE} --port ${TGCD_PORT} --llport ${TGCD_LLPORT} --interface ${TGCD_INTEFACE}
+
+[Install]
+WantedBy=multi-user.target
